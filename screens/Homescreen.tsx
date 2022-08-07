@@ -1,27 +1,31 @@
 
-import { View, Text, Button } from 'react-native'
-import React, { FC } from 'react'
-import { SafeAreaView } from 'react-native-safe-area-context'
-import Animated, { useAnimatedProps, useSharedValue, useAnimatedStyle, withSpring } from 'react-native-reanimated'
-
+import { useNavigation } from '@react-navigation/native';
+import React, { FC, useLayoutEffect } from 'react'
+import { Button, Text, View } from 'react-native'
+import { HomeIcon as Home } from 'react-native-heroicons/solid'
+import { Pressable } from "react-native"
+import { RouteButton } from '../components/RouteButton';
 
 const Homescreen: FC = () => {
-    const offset = useSharedValue(0);
-    const AnimatedStyles = useAnimatedStyle(() => {
-        return {
-            transform: [{
-                translateX: offset.value * 255
-            }],
-
-        }
+    const navigation = useNavigation();
+    useLayoutEffect(() => {
+        navigation.setOptions({
+            headerShown: false
+        })
     })
+
     return (
-        <SafeAreaView>
-            <Animated.View className={`bg-black rounded-full h-10 w-10 my-10 mx-10`} style={AnimatedStyles} />
-            <Button onPress={() => {
-                offset.value = withSpring(Math.random())
-            }} title="press" />
-        </SafeAreaView>
+        <>
+            <View >
+                <View className='flex flex-row items-center px-4 my-5 '>
+                    <Text className='text-2xl flex-1 '>Welcome to home screen</Text>
+                    <Home size={25} color='black' />
+                </View>
+
+                <RouteButton routeName='Register' title='Go to Register Page' />
+            </View>
+
+        </>
     )
 }
 
