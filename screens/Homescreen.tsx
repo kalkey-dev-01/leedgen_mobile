@@ -3,15 +3,16 @@ import { useNavigation } from '@react-navigation/native';
 import React, { FC, useLayoutEffect } from 'react'
 import { ActivityIndicator, Text, TextInput, View, ViewProps, TextProps } from 'react-native'
 import { HomeIcon as Home, BellIcon as Notifications, SearchCircleIcon as Search } from 'react-native-heroicons/solid'
-import { Pressable } from "react-native"
+import { Pressable, ScrollView } from "react-native"
 import Animated, { useSharedValue, useAnimatedStyle, withSequence, withTiming, withRepeat } from 'react-native-reanimated';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-import { RegisterScreen } from './RegisterScreen';
+import { FnLnD } from './fnlnd';
 import axios, { AxiosResponse } from 'axios';
+import { LeedCard } from '../components/LeedCard';
 
 const Tab = createMaterialTopTabNavigator();
 
-const Hscreen = () => {
+const Hscreen: FC = () => {
     const notification = null;
     const rotation = useSharedValue<number>(0);
     const [names, setName] = React.useState<string>('')
@@ -25,7 +26,7 @@ const Hscreen = () => {
     return (
         <View className='bg-white'>
             <View className='flex flex-row items-center px-4 my-5 '>
-                <Text className='text-2xl flex-1 '>Welcome user </Text>
+                <Text className='text-2xl flex-1 '>Find Companies related </Text>
 
                 <Pressable onPress={() => {
                     rotation.value = withSequence(
@@ -39,10 +40,7 @@ const Hscreen = () => {
                     <Animated.View style={animatedStyle}>
                         <Notifications size={25} color='black' />
                     </Animated.View>
-
                 </Pressable>
-
-
             </View>
 
             <Text className='text-left mb-4 px-4 text-lg font-semibold'>Enter the name of the company you want to extract info about</Text>
@@ -54,10 +52,11 @@ const Hscreen = () => {
                     onChangeText={(e) => {
                         setName(e)
                     }}
+
                 />
                 <Search color='black' size={50} onPress={async () => {
                     console.log(names)
-                    axios.post('https://app.leadwity.com/api-product/incoming-webhook/convert-company-names', {
+                    await axios.post('https://app.leadwity.com/api-product/incoming-webhook/convert-company-names', {
                         "api_key": "M1W1N9B0-N0Q9J1U4-O7A8E2H1-H6I3M1Q9",
                         "company_name": names
                     }).then((res) => {
@@ -85,25 +84,18 @@ const Hscreen = () => {
                             </Text>
                     }
                 </View>
-                <View>{data !== undefined
-                    ? <View className=''>
-                        <Text className='text-white text-base font-bold pl-4 ' >{data?.data[0]['name']}</Text>
-                        <Text className='text-white text-base font-bold pl-4 ' > {data?.data[0]['domain']}</Text>
-                        <Text className='text-white text-base font-bold pl-4 ' >{data?.data[1]['name']}</Text>
-                        <Text className='text-white text-base font-bold pl-4 ' > {data?.data[1]['domain']}</Text>
-                        <Text className='text-white text-base font-bold pl-4 ' >{data?.data[2]['name']}</Text>
-                        <Text className='text-white text-base font-bold pl-4 ' > {data?.data[2]['domain']}</Text>
-                        <Text className='text-white text-base font-bold pl-4 ' >{data?.data[3]['name']}</Text>
-                        <Text className='text-white text-base font-bold pl-4 ' > {data?.data[3]['domain']}</Text>
-                        <Text className='text-white text-base font-bold pl-4 ' >{data?.data[4]['name']}</Text>
-                        <Text className='text-white text-base font-bold pl-4 ' > {data?.data[4]['domain']}</Text>
-
-                    </View>
-                    : <Text className='text-white pl-4 font-black pt-10' >It evaluates the responsiveness of the leed</Text>
+                <View>{
+                    data !== undefined
+                        ? <ScrollView scrollEnabled className=''>
+                            <LeedCard data={data} i={0} />
+                            <LeedCard data={data} i={1} />
+                            <LeedCard data={data} i={2} />
+                            <LeedCard data={data} i={3} />
+                            <LeedCard data={data} i={4} />
+                        </ScrollView>
+                        : <Text className='text-white pl-4 font-black pt-10' >It evaluates the responsiveness of the leed</Text>
                 }
                 </View>
-
-
             </View>
 
         </View>
@@ -120,9 +112,9 @@ const Homescreen: FC = () => {
         })
     });
     return (
-        <Tab.Navigator initialRouteName='login'>
-            <Tab.Screen name='Register' component={RegisterScreen} />
-            <Tab.Screen name='login' component={Hscreen} />
+        <Tab.Navigator initialRouteName='CCN' >
+            <Tab.Screen name='FNLND' component={FnLnD} />
+            <Tab.Screen name='CCN' component={Hscreen} />
         </Tab.Navigator>
     )
 

@@ -2,7 +2,7 @@ import { Text, View } from 'react-native'
 import React from 'react'
 
 interface NotificationsProps {
-
+ noti?: {}
 }
 
 export const Notifications: React.FC<NotificationsProps> = ({ }) => {

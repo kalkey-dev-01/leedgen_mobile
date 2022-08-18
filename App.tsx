@@ -5,8 +5,9 @@ import { NavigationContainer } from '@react-navigation/native';
 import Homescreen from './screens/Homescreen';
 import Header from './components/Header';
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
-import { RegisterScreen } from './screens/RegisterScreen';
+import { FnLnD } from './screens/fnlnd';
 import { Notifications } from './screens/notifications';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 
 const Stack = createNativeStackNavigator();
@@ -14,6 +15,7 @@ const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
+    <SafeAreaProvider>
     <NavigationContainer>
       <TailwindProvider>
         <Header name='leedGen' />
@@ -22,11 +24,12 @@ export default function App() {
           headerTitleAlign: 'center'
         }}>
           <Stack.Screen name='Home' component={Homescreen} />
-          <Stack.Screen name="Register" component={RegisterScreen} />
+          <Stack.Screen name="Register" component={FnLnD} />
           <Stack.Screen name="Notifications" component={Notifications} />
         </Stack.Navigator>
       </TailwindProvider>
     </NavigationContainer>
+    </SafeAreaProvider>
   );
 }
 
