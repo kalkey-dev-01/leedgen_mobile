@@ -46,19 +46,19 @@ export const FnLnD: React.FC<FnLnDProps> = ({ }) => {
             <View className='my-2'>
                 <View className='flex flex-row items-center my-2 align-middle'>
                     <Text className='text-base font-bold px-2 '>First Name</Text>
-                    <TextInput placeholder='Joe' value={first_name} onChangeText={(e) => {
+                    <TextInput placeholder='Joe' autoCorrect={false} value={first_name} onChangeText={(e) => {
                         setFirstName(e)
                     }} className='px-3 font-semibold  bg-white rounded-3xl borsder-black border-2 flex-1 mx-2' />
                 </View>
                 <View className='flex flex-row items-center my-2 align-middle'>
                     <Text className='text-base font-bold px-2 '>Last Name</Text>
-                    <TextInput placeholder='Smith' value={last_Name} onChangeText={(e) => {
+                    <TextInput placeholder='Smith' autoCorrect={false} value={last_Name} onChangeText={(e) => {
                         setLastName(e)
                     }} className='px-3 font-semibold  bg-white rounded-3xl border-black border-2 flex-1 mx-2' />
                 </View>
                 <View className='flex flex-row items-center my-2 align-middle'>
                     <Text className='text-base font-bold px-2 '>Domain</Text>
-                    <TextInput placeholder='domain.com' value={domain} onChangeText={(e) => {
+                    <TextInput placeholder='domain.com' autoCorrect={false} value={domain} onChangeText={(e) => {
                         setDomain(e)
                     }} className='px-3 font-semibold  bg-white rounded-3xl border-black border-2 flex-1 mx-2' />
                 </View>

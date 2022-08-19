@@ -19,7 +19,7 @@ export const EnrichCompany: React.FC<EnrichCompanyProps> = ({ }) => {
                 <UserGroup size={25} color={'white'} />
             </View>
             <View className='my-5 mx-4 flex flex-row align-middle items-center'>
-                <TextInput value={domain} onChangeText={(e) => {
+                <TextInput autoCorrect={false} value={domain} onChangeText={(e) => {
                     setDomain(e)
                 }} placeholder='"domain.com" --use-this-format' className='px-3 font-semibold bg-white rounded-3xl border-black border-2 flex-1 mx-2' />
                 <Pressable onPress={async () => {
@@ -34,7 +34,7 @@ export const EnrichCompany: React.FC<EnrichCompanyProps> = ({ }) => {
                     }).catch((e) => {
                         console.error(e)
                     }).finally(() => {
-                        console.log('Employee Post Function')
+
                     })
                 }}>
                     <View className='bg-black p-1 rounded-full'>
@@ -50,10 +50,10 @@ export const EnrichCompany: React.FC<EnrichCompanyProps> = ({ }) => {
                 }
             </View>
             {/* Axios Post Function on  https://app.leadwity.com/api-product/incoming-webhook/enrich-company */}
-            <View className='h-full bg-white'>              
+            <View className='h-full bg-white'>
                 {
                     data !== undefined ?
-                        <ScrollView> 
+                        <ScrollView>
                             <EmployeeCard data={data} index={0} />
                             <EmployeeCard data={data} index={1} />
                             <EmployeeCard data={data} index={2} />

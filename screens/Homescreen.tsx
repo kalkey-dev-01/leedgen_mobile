@@ -50,6 +50,7 @@ const Hscreen: FC = () => {
             flex-1 border-black shadow-lg shadow-gray-500 
             mx-2 mb-3 py-2 text-black px-4 rounded-full'
                     value={names}
+                    autoCorrect={false}
                     onChangeText={(e) => {
                         setName(e)
                     }}
