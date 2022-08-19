@@ -9,6 +9,7 @@ import { createMaterialTopTabNavigator } from '@react-navigation/material-top-ta
 import { FnLnD } from './fnlnd';
 import axios, { AxiosResponse } from 'axios';
 import { LeedCard } from '../components/LeedCard';
+import { EnrichCompany } from './EnrichCompany';
 
 const Tab = createMaterialTopTabNavigator();
 
@@ -115,6 +116,7 @@ const Homescreen: FC = () => {
         <Tab.Navigator initialRouteName='CCN' >
             <Tab.Screen name='FNLND' component={FnLnD} />
             <Tab.Screen name='CCN' component={Hscreen} />
+            <Tab.Screen name='ENCO' component={EnrichCompany}/>
         </Tab.Navigator>
     )
 
