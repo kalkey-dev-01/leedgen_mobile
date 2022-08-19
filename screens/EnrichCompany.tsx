@@ -1,7 +1,8 @@
-import { Pressable, Text, TextInput, View } from 'react-native'
+import { Pressable, ScrollView, Text, TextInput, View } from 'react-native'
 import React, { useState } from 'react'
 import { UserGroupIcon as UserGroup, DocumentSearchIcon as DocSearch } from 'react-native-heroicons/outline'
 import axios, { AxiosResponse, } from 'axios'
+import { EmployeeCard } from '../components/EmployeeCard'
 interface EnrichCompanyProps {
 
 }
@@ -41,23 +42,35 @@ export const EnrichCompany: React.FC<EnrichCompanyProps> = ({ }) => {
                     </View>
                 </Pressable>
             </View>
-            <View className='bg-white'>
+            <View className='bg-white border-black border-2 px-4 py-1.5'>
                 {
                     domain !== ""
-                        ? <Text className='text-black  text-center font-bold'>Press Search to Leed "{domain}" Employees.</Text>
-                        : <Text className='text-black  text-lg text-center font-semibold'>Enter The domain</Text>
+                        ? <Text className='text-black  text-left font-bold'>Press Search to Leed "{domain}" Employees.</Text>
+                        : <Text className='text-black  text-lg text-left font-semibold'>Enter The domain</Text>
                 }
             </View>
             {/* Axios Post Function on  https://app.leadwity.com/api-product/incoming-webhook/enrich-company */}
-            <View>
+            <View className='h-full bg-white'>              
                 {
-                    data !== undefined ? <View>
-                        {console.log(data?.data['employees'][0]['first_name'])}
-                    </View> : <View>
-                        <Text>
-                            Non functional domain or type again
-                        </Text>
-                    </View>
+                    data !== undefined ?
+                        <ScrollView> 
+                            <EmployeeCard data={data} index={0} />
+                            <EmployeeCard data={data} index={1} />
+                            <EmployeeCard data={data} index={2} />
+                            <EmployeeCard data={data} index={3} />
+                            <EmployeeCard data={data} index={4} />
+                            <EmployeeCard data={data} index={5} />
+                            <EmployeeCard data={data} index={6} />
+                            <EmployeeCard data={data} index={7} />
+                            <EmployeeCard data={data} index={8} />
+                            <EmployeeCard data={data} index={9} />
+
+                        </ScrollView>
+                        : <View className='h-full bg-black flex items-center justify-start pt-20'>
+                            <Text className='text-xl text-white font-black text-center'>
+                                Make sure the format is in 'companydomain.com' or the search might not complete. :-!
+                            </Text>
+                        </View>
                 }
             </View>
 

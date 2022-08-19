@@ -27,7 +27,7 @@ const Hscreen: FC = () => {
     return (
         <View className='bg-white'>
             <View className='flex flex-row items-center px-4 my-5 '>
-                <Text className='text-2xl flex-1 '>Find Companies related </Text>
+                <Text className='text-2xl flex-1 '>Find Domains related </Text>
 
                 <Pressable onPress={() => {
                     rotation.value = withSequence(
@@ -56,7 +56,7 @@ const Hscreen: FC = () => {
 
                 />
                 <Search color='black' size={50} onPress={async () => {
-                    console.log(names)
+                    
                     await axios.post('https://app.leadwity.com/api-product/incoming-webhook/convert-company-names', {
                         "api_key": "M1W1N9B0-N0Q9J1U4-O7A8E2H1-H6I3M1Q9",
                         "company_name": names
@@ -66,7 +66,7 @@ const Hscreen: FC = () => {
                     }).catch((err) => {
                         console.log(err)
                     }).finally(() => {
-                        console.log('Post Function')
+                      
                     })
 
                 }} />
@@ -85,7 +85,7 @@ const Hscreen: FC = () => {
                             </Text>
                     }
                 </View>
-                <View>{
+                <View className='h-full'>{
                     data !== undefined
                         ? <ScrollView scrollEnabled className=''>
                             <LeedCard data={data} i={0} />
