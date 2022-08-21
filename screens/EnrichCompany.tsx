@@ -15,7 +15,7 @@ export const EnrichCompany: React.FC<EnrichCompanyProps> = ({ }) => {
         <View className='bg-white h-full'>
             <View className='bg-black flex flex-row items-center px-4' >
                 <View className='flex-1'>
-                    <Text className='text-white font-semibold text-base my-5'>Use a Company domain to find out the employees information</Text>
+                    <Text className='text-white font-bold text-lg my-5'>Find employees information</Text>
                 </View>
                 <UserGroup size={25} color={'white'} />
             </View>
@@ -30,7 +30,6 @@ export const EnrichCompany: React.FC<EnrichCompanyProps> = ({ }) => {
                     }).then((res) => {
                         SetData(res)
                         return data
-
                     }).catch((e) => {
                         console.error(e)
                     }).finally(() => {
@@ -52,7 +51,8 @@ export const EnrichCompany: React.FC<EnrichCompanyProps> = ({ }) => {
             {/* Axios Post Function on  https://app.leadwity.com/api-product/incoming-webhook/enrich-company */}
             <View className='h-full bg-white'>
                 {
-                    data !== undefined ?
+                    data !== undefined
+                        ?
                         <ScrollView>
                             <EmployeeCard data={data} index={0} />
                             <EmployeeCard data={data} index={1} />

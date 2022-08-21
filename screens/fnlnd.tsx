@@ -1,6 +1,6 @@
 import { Text, View, Pressable, TextInput, ViewProps, TextProps } from 'react-native'
 import React from 'react'
-import { CubeIcon as Cube, GlobeIcon as Globe } from 'react-native-heroicons/outline'
+import { CubeIcon as Cube, GlobeIcon as Globe, MailOpenIcon } from 'react-native-heroicons/outline'
 import Animated, { useSharedValue, useAnimatedStyle, withSequence, withTiming, withRepeat } from 'react-native-reanimated';
 import axios, { AxiosResponse } from 'axios';
 
@@ -82,9 +82,12 @@ export const FnLnD: React.FC<FnLnDProps> = ({ }) => {
                                 return data
                             }).catch((err) => {
                                 console.log(err)
-                            }).finally(() => {  })
+                            }).finally(() => { })
                         }}>
-                        <Text className='bg-black text-xl text-white py-2 text-center  px-3'>Search</Text>
+                        <View className='flex flex-row items-center justify-center  bg-black'>
+                            <Text className='bg-black text-xl text-white py-2 text-center  px-3'>Search</Text>
+                            <MailOpenIcon size={25} color={'white'} />
+                        </View>
                     </Pressable>
                 </View>
                 <View>

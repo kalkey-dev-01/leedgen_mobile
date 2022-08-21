@@ -2,7 +2,8 @@
 import { useNavigation } from '@react-navigation/native';
 import React, { FC, useLayoutEffect } from 'react'
 import { ActivityIndicator, Text, TextInput, View, ViewProps, TextProps } from 'react-native'
-import { HomeIcon as Home, BellIcon as Notifications, SearchCircleIcon as Search } from 'react-native-heroicons/solid'
+import { MailIcon as Mail, BellIcon as Notifications, SearchCircleIcon as Search, OfficeBuildingIcon as Company, UserGroupIcon as UserGroup } from 'react-native-heroicons/outline'
+import { MailIcon as MailS, OfficeBuildingIcon as Comp, UserGroupIcon as UserG } from 'react-native-heroicons/solid'
 import { Pressable, ScrollView } from "react-native"
 import Animated, { useSharedValue, useAnimatedStyle, withSequence, withTiming, withRepeat } from 'react-native-reanimated';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
@@ -39,7 +40,7 @@ const Hscreen: FC = () => {
 
                 }}>
                     <Animated.View style={animatedStyle}>
-                        <Notifications size={25} color='black' />
+                        <Company size={25} color='black' />
                     </Animated.View>
                 </Pressable>
             </View>
@@ -57,7 +58,7 @@ const Hscreen: FC = () => {
 
                 />
                 <Search color='black' size={50} onPress={async () => {
-                    
+
                     await axios.post('https://app.leadwity.com/api-product/incoming-webhook/convert-company-names', {
                         "api_key": "M1W1N9B0-N0Q9J1U4-O7A8E2H1-H6I3M1Q9",
                         "company_name": names
@@ -67,7 +68,7 @@ const Hscreen: FC = () => {
                     }).catch((err) => {
                         console.log(err)
                     }).finally(() => {
-                      
+
                     })
 
                 }} />
@@ -114,10 +115,19 @@ const Homescreen: FC = () => {
         })
     });
     return (
-        <Tab.Navigator initialRouteName='CCN' >
-            <Tab.Screen name='FNLND' component={FnLnD} />
-            <Tab.Screen name='CCN' component={Hscreen} />
-            <Tab.Screen name='ENCO' component={EnrichCompany}/>
+        <Tab.Navigator initialRouteName='CCN' screenOptions={{ tabBarIndicatorStyle: { backgroundColor: 'black', borderRadius: 100 } }} >
+            <Tab.Screen options={{
+                tabBarIcon: ({ focused }) =>
+                    (focused ? <MailS size={25} color='black' /> : <Mail size={25} color='#151515' />), tabBarShowLabel: false
+            }} name='FNLND' component={FnLnD} />
+            <Tab.Screen options={{
+                tabBarIcon: ({ focused }) =>
+                    (focused ? <Comp size={25} color='black' /> : <Company size={25} color='#151515' />), tabBarShowLabel: false
+            }} name='CCN' component={Hscreen} />
+            <Tab.Screen options={{
+                tabBarIcon: ({ focused }) =>
+                    (focused ? <UserG size={25} color='black' /> : <UserGroup size={25} color='#151515' />), tabBarShowLabel: false
+            }} name='ENCO' component={EnrichCompany} />
         </Tab.Navigator>
     )
 
