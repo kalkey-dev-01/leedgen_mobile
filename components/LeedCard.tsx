@@ -1,13 +1,14 @@
 import { Image, Text, View } from 'react-native'
 import React from 'react'
 import { AxiosResponse } from 'axios';
+import usePost from './utils/usePost';
 
 interface LeedCardProps {
     data: AxiosResponse | undefined;
     i: number;
-
+  
 }
-
+ 
 export const LeedCard: React.FC<LeedCardProps> = ({ data, i }) => {
     return (
         <View className='bg-white flex flex-row  my-2.5 px-4 py-2.5 items-center align-middle justify-between '>

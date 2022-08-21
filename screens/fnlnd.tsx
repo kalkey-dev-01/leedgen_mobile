@@ -82,15 +82,13 @@ export const FnLnD: React.FC<FnLnDProps> = ({ }) => {
                                 return data
                             }).catch((err) => {
                                 console.log(err)
-                            }).finally(() =>
-                                console.log(data)
-                            )
+                            }).finally(() => {  })
                         }}>
                         <Text className='bg-black text-xl text-white py-2 text-center  px-3'>Search</Text>
                     </Pressable>
                 </View>
                 <View>
-                    {data !== undefined ? <View className='pt-10 flex flex-col gap-10 px-5'>
+                    {data !== null && data !== undefined ? <View className='pt-10 flex flex-col gap-10 px-5'>
                         <Text className='text-2xl text-black text-center'>The Email found is </Text>
                         <Text className='text-black text-2xl text-center font-semibold'>{data}</Text>
                         <Text className='text-black font-bold text-xl text-center'>This might be a business or a company provided Email</Text>

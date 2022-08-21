@@ -25,7 +25,7 @@ export const EnrichCompany: React.FC<EnrichCompanyProps> = ({ }) => {
                 <Pressable onPress={async () => {
                     await axios.post('https://app.leadwity.com/api-product/incoming-webhook/enrich-company', {
                         "api_key": "M1W1N9B0-N0Q9J1U4-O7A8E2H1-H6I3M1Q9",
-                        "domain": domain
+                        "domain": domain.toLowerCase
                     }).then((res) => {
 
                         SetData(res)
@@ -42,7 +42,7 @@ export const EnrichCompany: React.FC<EnrichCompanyProps> = ({ }) => {
                     </View>
                 </Pressable>
             </View>
-            <View className='bg-white border-black border-2 px-4 py-1.5'>
+            <View className='bg-white border-black border-t-2 px-4 py-1.5'>
                 {
                     domain !== ""
                         ? <Text className='text-black  text-left font-bold'>Press Search to Leed "{domain}" Employees.</Text>
