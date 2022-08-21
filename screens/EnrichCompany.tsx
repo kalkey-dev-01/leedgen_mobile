@@ -9,6 +9,7 @@ interface EnrichCompanyProps {
 
 export const EnrichCompany: React.FC<EnrichCompanyProps> = ({ }) => {
     const [data, SetData] = useState<AxiosResponse | undefined>()
+
     const [domain, setDomain] = useState<string>('')
     return (
         <View className='bg-white h-full'>
@@ -19,15 +20,14 @@ export const EnrichCompany: React.FC<EnrichCompanyProps> = ({ }) => {
                 <UserGroup size={25} color={'white'} />
             </View>
             <View className='my-5 mx-4 flex flex-row align-middle items-center'>
-                <TextInput autoCorrect={false} value={domain} onChangeText={(e) => {
+                <TextInput autoCorrect={false} value={domain} autoCapitalize={'none'} onChangeText={(e) => {
                     setDomain(e)
                 }} placeholder='"domain.com" --use-this-format' className='px-3 font-semibold bg-white rounded-3xl border-black border-2 flex-1 mx-2' />
                 <Pressable onPress={async () => {
                     await axios.post('https://app.leadwity.com/api-product/incoming-webhook/enrich-company', {
                         "api_key": "M1W1N9B0-N0Q9J1U4-O7A8E2H1-H6I3M1Q9",
-                        "domain": domain.toLowerCase
+                        "domain": domain
                     }).then((res) => {
-
                         SetData(res)
                         return data
 
