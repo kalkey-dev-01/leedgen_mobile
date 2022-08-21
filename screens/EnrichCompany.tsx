@@ -13,7 +13,7 @@ export const EnrichCompany: React.FC<EnrichCompanyProps> = ({ }) => {
     const [domain, setDomain] = useState<string>('')
     return (
         <View className='bg-white h-full'>
-            <View className='bg-black flex flex-row items-center px-4  ' >
+            <View className='bg-black flex flex-row items-center px-4' >
                 <View className='flex-1'>
                     <Text className='text-white font-semibold text-base my-5'>Use a Company domain to find out the employees information</Text>
                 </View>
