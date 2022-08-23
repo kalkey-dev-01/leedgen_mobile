@@ -51,7 +51,7 @@ const Hscreen: FC = () => {
             <View className='flex flex-row justify-center items-center align-middle mx-2'>
                 <TextInput className='bg-white border-2 
             flex-1 border-black 
-            mx-2 mb-3 py-2 text-black px-4 rounded-full'
+            mx-2 py-2 text-black px-4 rounded-full'
                     value={names}
                     autoCorrect={false}
                     onChangeText={(e) => {
