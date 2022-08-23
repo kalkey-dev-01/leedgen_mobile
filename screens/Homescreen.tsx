@@ -12,6 +12,7 @@ import axios, { AxiosResponse } from 'axios';
 import { LeedCard } from '../components/LeedCard';
 import { EnrichCompany } from './EnrichCompany';
 
+
 const Tab = createMaterialTopTabNavigator();
 
 const Hscreen: FC = () => {
@@ -26,6 +27,7 @@ const Hscreen: FC = () => {
         };
     });
     return (
+
         <View className='bg-white'>
             <View className='flex flex-row items-center px-4 my-5 '>
                 <Text className='text-2xl flex-1 '>Find Domains related </Text>
@@ -46,9 +48,9 @@ const Hscreen: FC = () => {
             </View>
 
             <Text className='text-left mb-4 px-4 text-lg font-semibold'>Enter the name of the company you want to extract info about</Text>
-            <View className='flex flex-row justify-center align-middle mx-2'>
+            <View className='flex flex-row justify-center items-center align-middle mx-2'>
                 <TextInput className='bg-white border-2 
-            flex-1 border-black shadow-lg shadow-gray-500 
+            flex-1 border-black 
             mx-2 mb-3 py-2 text-black px-4 rounded-full'
                     value={names}
                     autoCorrect={false}
@@ -111,11 +113,15 @@ const Homescreen: FC = () => {
     const navigation = useNavigation();
     useLayoutEffect(() => {
         navigation.setOptions({
-            headerShown: false
+            headerShown: true
         })
     });
     return (
-        <Tab.Navigator initialRouteName='CCN' screenOptions={{ tabBarIndicatorStyle: { backgroundColor: 'black', borderRadius: 100 } }} >
+
+        <Tab.Navigator initialRouteName='CCN' screenOptions={{
+            tabBarIndicatorStyle: { backgroundColor: 'black', borderRadius: 100 },
+            tabBarStyle: { elevation: 0 }
+        }} >
             <Tab.Screen options={{
                 tabBarIcon: ({ focused }) =>
                     (focused ? <MailS size={25} color='black' /> : <Mail size={25} color='#151515' />), tabBarShowLabel: false
@@ -129,6 +135,7 @@ const Homescreen: FC = () => {
                     (focused ? <UserG size={25} color='black' /> : <UserGroup size={25} color='#151515' />), tabBarShowLabel: false
             }} name='ENCO' component={EnrichCompany} />
         </Tab.Navigator>
+
     )
 
 }
