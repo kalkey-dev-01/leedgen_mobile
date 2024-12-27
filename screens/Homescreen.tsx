@@ -61,8 +61,8 @@ const Hscreen: FC = () => {
                 />
                 <Search color='black' size={50} onPress={async () => {
 
-                    await axios.post('https://app.leadwity.com/api-product/incoming-webhook/convert-company-names', {
-                        "api_key": "M1W1N9B0-N0Q9J1U4-O7A8E2H1-H6I3M1Q9",
+                    await axios.post('/convert-company-names', {
+                        "api_key": "",
                         "company_name": names
                     }).then((res) => {
                         setData(res.data)

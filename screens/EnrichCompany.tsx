@@ -24,8 +24,8 @@ export const EnrichCompany: React.FC<EnrichCompanyProps> = ({ }) => {
                     setDomain(e)
                 }} placeholder='"domain.com" --use-this-format' className='px-3 font-semibold bg-white rounded-3xl border-black border-2 flex-1 mx-2' />
                 <Pressable onPress={async () => {
-                    await axios.post('https://app.leadwity.com/api-product/incoming-webhook/enrich-company', {
-                        "api_key": "M1W1N9B0-N0Q9J1U4-O7A8E2H1-H6I3M1Q9",
+                    await axios.post('incoming-webhook/enrich-company', {
+                        "api_key": "",
                         "domain": domain
                     }).then((res) => {
                         SetData(res)

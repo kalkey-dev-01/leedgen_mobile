@@ -8,7 +8,7 @@ import axios, { AxiosResponse } from 'axios';
 interface FnLnDProps {
 
 }
-// https://app.leadwity.com/api-product/incoming-webhook/find-emails-first-last
+
 
 export const FnLnD: React.FC<FnLnDProps> = ({ }) => {
     const [first_name, setFirstName] = React.useState<string>('')
@@ -71,8 +71,8 @@ export const FnLnD: React.FC<FnLnDProps> = ({ }) => {
 
                                 withTiming(0, { duration: 1000 })
                             );
-                            await axios.post('https://app.leadwity.com/api-product/incoming-webhook/find-emails-first-last', {
-                                "api_key": "M1W1N9B0-N0Q9J1U4-O7A8E2H1-H6I3M1Q9",
+                            await axios.post('/find-emails-first-last', {
+                                "api_key": "",
                                 "first_name": first_name,
 
                                 "last_name": last_Name,
